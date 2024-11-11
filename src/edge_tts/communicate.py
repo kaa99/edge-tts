@@ -335,7 +335,7 @@ class Communicate:
                 "Content-Type:application/json; charset=utf-8\r\n"
                 "Path:speech.config\r\n\r\n"
                 '{"context":{"synthesis":{"audio":{"metadataoptions":{'
-                '"sentenceBoundaryEnabled":true,"wordBoundaryEnabled":true},'
+                '"sentenceBoundaryEnabled":true,"wordBoundaryEnabled":false},'
                 '"outputFormat":"audio-24khz-48kbitrate-mono-mp3"'
                 "}}}}\r\n"
             )
