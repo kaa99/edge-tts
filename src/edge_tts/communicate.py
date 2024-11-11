@@ -300,7 +300,7 @@ class Communicate:
     def __parse_metadata(self, data: bytes) -> Dict[str, Any]:
         for meta_obj in json.loads(data)["Metadata"]:
             meta_type = meta_obj["Type"]
-            if meta_type == "WordBoundary":
+            if meta_type == "SentenceBoundary":
                 current_offset = (
                     meta_obj["Data"]["Offset"] + self.state["offset_compensation"]
                 )
