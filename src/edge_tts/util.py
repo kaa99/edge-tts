@@ -65,7 +65,7 @@ async def _run_tts(args: Any) -> None:
         async for chunk in tts.stream():
             if chunk["type"] == "audio":
                 audio_file.write(chunk["data"])
-            elif chunk["type"] == "WordBoundary":
+            elif chunk["type"] == "SentenceBoundary":
                 subs.create_sub((chunk["offset"], chunk["duration"]), chunk["text"])
 
     sub_file: Union[TextIOWrapper, TextIO] = (
@@ -74,7 +74,7 @@ async def _run_tts(args: Any) -> None:
         else sys.stderr
     )
     with sub_file:
-        sub_file.write(subs.generate_subs(args.words_in_cue))
+        sub_file.write(subs.generate_subs2())
 
 
 async def amain() -> None:

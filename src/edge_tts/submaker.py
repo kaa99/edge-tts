@@ -62,6 +62,18 @@ class SubMaker:
         self.offset.append((timestamp[0], timestamp[0] + timestamp[1]))
         self.subs.append(text)
 
+    def generate_subs2(self) ->str:
+        data = "WEBVTT\r\n\r\n"
+        for idx, (offset, subs) in enumerate(zip(self.offset, self.subs)):
+            start_time, end_time = offset
+            subs = unescape(subs)
+            data += formatter(
+                    start_time=start_time,
+                    end_time=end_time,
+                    subdata=subs,
+                )
+        return data
+
     def generate_subs(self, words_in_cue: int = 10) -> str:
         """
         generate_subs generates the complete subtitle file.
